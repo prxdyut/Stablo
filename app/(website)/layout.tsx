@@ -8,8 +8,8 @@ import GetNavbar from "@/components/getnavbar";
 import { urlForImage } from "@/lib/sanity/image";
 
 const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter"
+  variable: "--font-inter",
+  preload: false
 });
 
 const lora = Lora({
@@ -66,7 +66,7 @@ export default async function Layout({ children, params }) {
     <html
       lang="en"
       suppressHydrationWarning
-      className={cx(inter.variable, lora.variable)}>
+      className={inter.className}>
       <body className="text-gray-800 antialiased dark:bg-black dark:text-gray-400">
         <Providers>
           <GetNavbar {...settings} />
@@ -78,4 +78,4 @@ export default async function Layout({ children, params }) {
   );
 }
 
-export const revalidate = 86400;
+export const revalidate = 60;
